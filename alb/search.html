@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block searchresults %}
+<h1 id="search">Search Results</h1>
+
+<form id="content_search" action="search.html">
+  <input name="q" id="mkdocs-search-query" type="text"
+        placeholder="Search the Docs" autocomplete="off"
+        autofocus title="Type search term here">
+</form>
+
+<div id="mkdocs-search-results">
+Searching...
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="{{ 'css/style2.css'|url }}">
+  <link rel="stylesheet" href="{{ 'css/mkdocs.css'|url }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="ICBM" content="-37.1114, -56.8678">
+<title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
+</head>
+<body>
+
+<header>
+<nav>
+<h1><a href="{{ base_url }}">{{ config.site_name }}</a></h1>
+</nav>
+</header>
+
+<main>
+
+<div class="content">
+{% block searchresults %}{% endblock %}
+{{ page.content }}
+</div>
+
+<div class="side">
+{% include 'side.html' %}
+</div>
+
+</main>
+
+<footer>
+<div>
+Thanks <a href="https://blitiri.com.ar/">Alberto Bertogli</a> for providing base for this neat mkdocs theme!
+Last updated: {{ build_date_utc.strftime("%Y-%m-%d") }}
+</div>
+</footer>
+
+<!-- For search -->
+<script>var base_url = '{{ base_url }}';</script>
+{%- for path in config['extra_javascript'] %}
+<script src="{{ path|url }}" defer></script>
+{%- endfor %}
+
+
+</body>
+</html>
+{% if page.is_homepage %}
+<!--
+MkDocs version : {{ mkdocs_version }}
+Build Date UTC : {{ build_date_utc }}
+-->
+{% endif %}
+

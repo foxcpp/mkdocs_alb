@@ -1,0 +1,51 @@
+
+{% macro entry(nav_item) -%}
+	<li>
+		{%- if nav_item.is_section %}
+		<span>{{ nav_item.title }}</span>
+		{%- else %}
+		<a href="{{ nav_item.url|url }}"
+				class="{% if nav_item.active%}current{% endif %}">
+			{{ nav_item.title }}</a>
+		{%- endif %}
+
+		{%- if nav_item == page %}
+		{% for toc_item in page.toc %}
+			{% if toc_item.children %}
+                <ul>
+                {% for toc_item in toc_item.children %}
+                    <li class="local">
+                        <a href="{{ toc_item.url }}">{{ toc_item.title }}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+        {% endif %}
+
+        {% if nav_item.children %}
+            <ul>
+            {% for nav_item in nav_item.children %}
+                {{ entry(nav_item) }}
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </li>
+{%- endmacro %}
+
+{% if 'search' in config['plugins'] %}
+<div class="search">
+  <form class="search" action="{{ base_url }}/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs"
+        title="Type search term here" />
+  </form>
+</div>
+{% endif %}
+
+<div class="toc" aria-label="main navigation">
+<ul>
+{% for nav_item in nav %}
+    {{ entry(nav_item) }}
+{% endfor %}
+</ul>
+</div>
