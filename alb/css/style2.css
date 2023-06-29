@@ -81,6 +81,18 @@ pre, code {
     font-family: "Fira Mono", "Go Mono", monospace;
 }
 
+h3 code {
+    background: #f0e2e6;
+    color: #c7254e;
+    border-radius: 4px;
+    padding: 2px 4px;
+    font-size: 90%;
+}
+
+h3 em {
+    font-weight: 500;
+}
+
 pre {
     padding: 1em;
     color: var(--text-color);
@@ -112,8 +124,8 @@ img {
 hr {
     margin-top: 2em;
     margin-bottom: 2em;
-    margin-left: 1em;
-    margin-right: 1em;
+    border: 0;
+    border-top: 2px solid #CCC;
 }
 
 /* to find the second td, we select "the TDs that come after another TD",
